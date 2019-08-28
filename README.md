@@ -1,6 +1,6 @@
 
 
-Check out [base of the project](https://github.com/olgarose/ParkingLot) for more!
+Check out [reference of the project](https://github.com/olgarose/ParkingLot) 
 
 ## Future work
 - Hook up a webcam to a Raspberry Pi and have live parking monitoring at home!
