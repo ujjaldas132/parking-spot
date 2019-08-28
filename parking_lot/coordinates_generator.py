@@ -7,7 +7,7 @@ from colors import COLOR_WHITE
 from drawing_utils import draw_contours
 
 #TODO : make the cordiante fix so that you dont have to draw everytime
-#TODO : want to redraw a box
+#TODO : want to redraw a box>>>> if a box have been drawn wronly , so there mightbe a process to redraw the box
 class CoordinatesGenerator:
     KEY_RESET = ord("r")
     KEY_QUIT = ord("q")
