@@ -26,6 +26,7 @@ def main():
         pickle.dump(generator.saveCordinate, storeCor)
         storeCor.close()
         print(generator.saveCordinate)
+        logging.info(generator.saveCordinate)
 
     with open(data_file, "r") as data:
         points = yaml.load(data)

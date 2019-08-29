@@ -5,14 +5,14 @@ except ImportError:
 
 config = {
     "description": "Parking Lot Space Detector",
-    "author": "Olga Rocheeva",
-    "url": "https://github.com/olgarose/ParkingLot",
-    "download_url": "https://github.com/olgarose/ParkingLot/archive/master.zip",
+    "author": "Ujjal Das",
+    "url": "https://github.com/ujjaldas132/parking-spot.git",
+    "download_url": "https://github.com/ujjaldas132/parking-spot/archive/master.zip",
     "version": "0.1",
     "install_requires": ["cv2", "numpy", "yml"],
-    "packages": ["parking_lot"],
+    "packages": ["assets"],
     "scripts": [],
-    "name": "ParkingLot"
+    "name": "parking-spot"
 }
 
 setup(**config)
