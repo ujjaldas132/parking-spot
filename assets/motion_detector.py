@@ -6,6 +6,13 @@ from colors import COLOR_GREEN, COLOR_WHITE, COLOR_BLUE
 import time
 
 
+"""
+from the detect_motion detect the place is filled or occupied
+when we linked to the app this is iterated for like n iterarion then get the result.
+take the result and given back to the main function
+"""
+
+
 class MotionDetector:
     LAPLACIAN = 1.55
     DETECT_DELAY = 1
@@ -18,7 +25,7 @@ class MotionDetector:
         self.bounds = []
         self.mask = []
 
-    def detect_motion(self):
+    def detect_motion(self,spotNo):
         capture = open_cv.VideoCapture(self.video)
         capture.set(open_cv.CAP_PROP_POS_FRAMES, self.start_frame)
 
@@ -62,6 +69,14 @@ class MotionDetector:
 
             if not result:
                 raise CaptureReadError("Error reading video capture on frame %s" % str(frame))
+            print(self.detectionTrigger(frame,capture,coordinates_data,times,statuses,spotNo))
+    
+
+
+
+
+    def detectionTrigger(self,frame,capture,coordinates_data,times,statuses,spotNo):
+        if True:
 
             blurred = open_cv.GaussianBlur(frame.copy(), (5, 5), 3)
             grayed = open_cv.cvtColor(blurred, open_cv.COLOR_BGR2GRAY)
@@ -88,20 +103,26 @@ class MotionDetector:
 
             for index, p in enumerate(coordinates_data):
                 # print status
-                print(statuses)
+                # print(statuses)
+                
                 coordinates = self._coordinates(p)
 
                 color = COLOR_GREEN if statuses[index] else COLOR_BLUE
                 draw_contours(new_frame, coordinates, str(p["id"] + 1), COLOR_WHITE, color)
+            
 
             open_cv.imshow(str(self.video), new_frame)
             k = open_cv.waitKey(1)
             if k == ord("q"):
-                break
+                capture.release()
+                open_cv.destroyAllWindows()
+                # break
+                
             # adding some delay
             time.sleep(0.011)
-        capture.release()
-        open_cv.destroyAllWindows()
+            # returning the spot is filled or occupied
+            return(statuses[spotNo])
+        
 
     def __apply(self, grayed, index, p):
         coordinates = self._coordinates(p)

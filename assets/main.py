@@ -33,7 +33,10 @@ def main():
         # points = load(data, Loader=yaml.Loader)
         # detector = MotionDetector(args.video_file, points, int(start_frame))
         detector = MotionDetector("videos/parking_lot_1.mp4", points, int(start_frame))
-        detector.detect_motion()
+        #pass the spot no which you want to spot
+        # in image the spotno are 1 index
+        spotNo=0
+        detector.detect_motion(spotNo)
 
 
 def parse_args():
